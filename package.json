@@ -1,0 +1,17 @@
+{
+  "name": "162's Md editor",
+  "main": "index.html",
+  "window": {
+    "icon": "link.png",
+    "toolbar": false,
+    "width": 1024,
+    "height": 700,
+    "position": "mouse",
+    "min_width": 800,
+    "min_height": 600,
+    "show" :true 
+  },
+  "webkit": {
+    "plugin": true
+  }
+}
