@@ -1,4 +1,5 @@
 var fs = require("fs");
+
 var extendedE = {
     saveFile:function(){
         //window.mainEditor
@@ -8,6 +9,8 @@ var extendedE = {
             extendedE.msgshow("请设置文件名");
         }
         fs.writeFileSync(path,content);
+        extendedE.filePath = path;
+        $("#path_notifier").html(path);
     },
     msgshow:function(msg){
         //MsgBoxDiag
@@ -17,13 +20,16 @@ var extendedE = {
     openFile:function(){
         var path = $("#openfile").val();
         if(path){
+            extendedE.filePath = path;
+            $("#path_notifier").html(path);
             var content =fs.readFileSync(path);
             $('#wmd-input').val(content);
             //'\n\n\n> *本文使用 [Cmd](http://ghosertblog.github.io/mdeditor/ "中文在线 Markdown 编辑器") 编写*');
             $('#wmd-input').setCursorPosition(0);
             window.mainEditor.refreshPreview();
         }
-    }
+    },
+    filePath:""
 };
 $(document).ready(function(){
     $("#choosefile").change(function(){
